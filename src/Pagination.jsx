@@ -5,11 +5,31 @@ function EmployeePagination() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
+  // useEffect(() => {
+  //   fetch(
+  //     "https://geektrust.s3-ap-southeast-1.amazonaws.com/adminui-problem/members.json"
+  //   )
+  //     .then((response) => response.json())
+  //     .then((data) => {
+  //       setEmployees(data);
+  //       setLoading(false);
+  //     })
+  //     .catch((err) => {
+  //       setError("failed to fetch data");
+  //       setLoading(false);
+  //     });
+  // }, []);
+
   useEffect(() => {
     fetch(
       "https://geektrust.s3-ap-southeast-1.amazonaws.com/adminui-problem/members.json"
     )
-      .then((response) => response.json())
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Network response was not ok"); // If the response is not ok, throw an error
+        }
+        return response.json();
+      })
       .then((data) => {
         setEmployees(data);
         setLoading(false);
@@ -17,6 +37,7 @@ function EmployeePagination() {
       .catch((err) => {
         setError("failed to fetch data");
         setLoading(false);
+        alert("failed to fetch data"); // Alert message that the test case expects
       });
   }, []);
 
