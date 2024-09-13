@@ -15,7 +15,7 @@ function EmployeePagination() {
         setLoading(false);
       })
       .catch((err) => {
-        setError("Failed to fetch data");
+        setError("failed to fetch data");
         setLoading(false);
       });
   }, []);
@@ -62,7 +62,7 @@ function TablePagination({ employees }) {
               textAlign: "left",
               backgroundColor: "#04AA6D",
               color: "white",
-              border: "10px solid #ddd",
+              border: "10px solid orange",
               padding: "20px",
             }}
           >
@@ -96,7 +96,7 @@ function TablePagination({ employees }) {
             display: "block",
             position: "absolute",
             height: "100%",
-            width: "100vw",
+            width: "100%",
             textAlign: "center",
           }}
         >
