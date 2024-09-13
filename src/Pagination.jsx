@@ -49,8 +49,9 @@ function TablePagination({ employees }) {
       <table
         style={{
           alignItems: "center",
-          width: "200%",
-          bordercollapse: "collapse",
+          width: "95vw",
+          height: "40vw",
+          border: "50px",
         }}
       >
         <thead>
@@ -61,8 +62,8 @@ function TablePagination({ employees }) {
               textAlign: "left",
               backgroundColor: "#04AA6D",
               color: "white",
-              border: "1px solid #ddd",
-              padding: "8px",
+              border: "10px solid #ddd",
+              padding: "20px",
             }}
           >
             <th>Id</th>
@@ -73,7 +74,7 @@ function TablePagination({ employees }) {
         </thead>
         <tbody
           style={{
-            padding: "8px",
+            padding: "10px",
             border: "1px solid #ddd",
             textAlign: "left",
           }}
@@ -90,15 +91,25 @@ function TablePagination({ employees }) {
       </table>
 
       <div style={{ border: "1px #ddd", padding: "8px", alignItems: "center" }}>
-        <button onClick={handlePrevious} disabled={currentPage === 1}>
-          Previous
-        </button>
-        <span>
-          Page {currentPage} of {totalPages}
-        </span>
-        <button onClick={handleNext} disabled={currentPage === totalPages}>
-          Next
-        </button>
+        <footer
+          style={{
+            display: "block",
+            position: "absolute",
+            height: "100%",
+            width: "100vw",
+            textAlign: "center",
+          }}
+        >
+          <button onClick={handlePrevious} disabled={currentPage === 1}>
+            Previous
+          </button>
+          <span>
+            Page {currentPage} of {totalPages}
+          </span>
+          <button onClick={handleNext} disabled={currentPage === totalPages}>
+            Next
+          </button>
+        </footer>
       </div>
     </div>
   );
