@@ -26,7 +26,7 @@ function EmployeePagination() {
     )
       .then((response) => {
         if (!response.ok) {
-          throw new Error("Network response was not ok"); // If the response is not ok, throw an error
+          throw new Error("failed to fetch data"); // If the response is not ok, throw an error
         }
         return response.json();
       })
