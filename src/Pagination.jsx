@@ -61,8 +61,8 @@ function EmployeePagination() {
       .catch((error) => console.error("failed to fetch data:", error.message));
   }, []);
 
-  // if (loading) return <div>Loading...</div>;
-  // if (error) return <div>{error}</div>;
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>{error}</div>;
 
   return <TablePagination employees={employees} />;
 }
