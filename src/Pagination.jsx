@@ -20,29 +20,49 @@ function EmployeePagination() {
   //     });
   // }, []);
 
+  // useEffect(() => {
+  //   fetch(
+  //     "https://geektrust.s3-ap-southeast-1.amazonaws.com/adminui-problem/members.json"
+  //   )
+  //     .then((response) => {
+  //       if (!response.ok) {
+  //         throw new Error("Network response was not ok");
+  //       }
+  //       return response.json();
+  //     })
+  //     .then((data) => {
+  //       setEmployees(data);
+  //       setLoading(false);
+  //     })
+  //     .catch((error) => {
+  //       setError("failed to fetch data");
+  //       setLoading(false);
+  //       alert("failed to fetch data");
+  //     });
+  // }, []);
+  // useEffect(() => {
+  //   if (error) {
+  //     alert(error);
+  //   }
+  // }, [error]);
+
+  // if (loading) {
+  //   return <div>Loading...</div>;
+  // }
+
   useEffect(() => {
     fetch(
       "https://geektrust.s3-ap-southeast-1.amazonaws.com/adminui-problem/members.json"
     )
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("failed to fetch data"); // If the response is not ok, throw an error
-        }
-        return response.json();
-      })
+      .then((res) => res.json())
       .then((data) => {
         setEmployees(data);
-        setLoading(false);
       })
-      .catch((err) => {
-        setError("failed to fetch data");
-        setLoading(false);
-        alert("failed to fetch data"); // Alert message that the test case expects
-      });
+      .catch((error) => console.error("failed to fetch data:", error.message));
   }, []);
 
-  if (loading) return <div>Loading...</div>;
-  if (error) return <div>{error}</div>;
+  // if (loading) return <div>Loading...</div>;
+  // if (error) return <div>{error}</div>;
 
   return <TablePagination employees={employees} />;
 }
@@ -63,7 +83,6 @@ function TablePagination({ employees }) {
   const handlePrevious = () => {
     if (currentPage > 1) setCurrentPage(currentPage - 1);
   };
-
   return (
     <div>
       <h2 style={{ textAlign: "center" }}>Employee Data Table</h2>
