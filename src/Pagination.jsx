@@ -5,32 +5,37 @@ function EmployeePagination() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // useEffect(() => {
-  fetch(
-    "https://geektrust.s3-ap-southeast-1.amazonaws.com/adminui-problem/members.json"
-  )
-    .then((response) => response.json())
-    .then((data) => {
-      setEmployees(data);
-      setLoading(false);
-    })
-    .catch((err) => {
-      // setError("failed to fetch data");
-      console.log("failed to fetch data", err);
-      alert("failed to fetch data");
-      // setLoading(false);
-    });
-  // }, []);
+  useEffect(() => {
+    fetch(
+      "https://geektrust.s3-ap-southeast-1.amazonaws.com/adminui-problem/members.json"
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        setEmployees(data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        // setError("failed to fetch data");
+        console.log("failed to fetch data", err);
+        // alert("failed to fetch data");
+        // setLoading(false);
+      });
+  }, []);
 
-  // fetch('https://geektrust.s3-ap-southeast-1.amazonaws.com/adminui-problem/members.json')
-  // .then((response) => response.json())
-  // .then((data) => {
-  //
-  // })
-  // .catch((error) => {
-  //   console.error('Error fetching data:', error);
-  //   alert('An error occurred while fetching data.');
-  // })
+  useEffect(() => {
+    if (error) {
+      alert(error);
+    }
+  }, [error]);
+  // fetch(
+  //   "https://geektrust.s3-ap-southeast-1.amazonaws.com/adminui-problem/members.json"
+  // )
+  //   .then((response) => response.json())
+  //   .then((data) => {})
+  //   .catch((error) => {
+  //     console.error("failed to fetch data", error);
+  //     alert("failed to fetch data.");
+  //   });
 
   if (loading) return <div>Loading...</div>;
   if (error) return <div>{error}</div>;
