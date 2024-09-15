@@ -15,10 +15,23 @@ function EmployeePagination() {
         setLoading(false);
       })
       .catch((err) => {
-        setError("failed to fetch data");
+        // setError("failed to fetch data");
+        console.log("failed to fetch data", err);
+        alert("failed to fetch data");
         // setLoading(false);
       });
   }, []);
+
+  // fetch('https://geektrust.s3-ap-southeast-1.amazonaws.com/adminui-problem/members.json')
+  // .then((response) => response.json())
+  // .then((data) => {
+  //   // Process the data
+  // })
+  // .catch((error) => {
+  //   console.error('Error fetching data:', error);
+  //   // Display a user-friendly error message
+  //   alert('An error occurred while fetching data.');
+  // })
 
   if (loading) return <div>Loading...</div>;
   if (error) return <div>{error}</div>;
