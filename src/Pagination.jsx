@@ -9,14 +9,19 @@ function EmployeePagination() {
     fetch(
       "https://geektrust.s3-ap-southeast-1.amazonaws.com/adminui-problem/members.json"
     )
-      .then((response) => response.json())
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("failed to fatch data");
+        }
+        return response.json();
+      })
       .then((data) => {
         setEmployees(data);
         setLoading(false);
       })
       .catch((err) => {
-        // setError("failed to fetch data");
-        console.log("failed to fetch data", err);
+        setError("failed to fetch data");
+        // console.log("failed to fetch data", err);
         // alert("failed to fetch data");
         // setLoading(false);
       });
