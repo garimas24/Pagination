@@ -16,7 +16,7 @@ function EmployeePagination() {
       })
       .catch((err) => {
         setError("failed to fetch data");
-        setLoading(false);
+        // setLoading(false);
       });
   }, []);
 
