@@ -20,7 +20,7 @@ function EmployeePagination() {
         setLoading(false);
       })
       .catch((err) => {
-        setError(err.message);
+        setError("failed to fetch data");
         // console.log("failed to fetch data", err);
         // alert("failed to fetch data");
         // setLoading(false);
